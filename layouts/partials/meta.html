@@ -1,0 +1,51 @@
+{{ hugo.Generator }}
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{ block "description" . }}
+    {{ with .Description }}
+    <meta name="description" content="{{ . | plainify }}">
+    {{ else }}
+        {{ with .Summary }}
+        <meta name="description" content="{{ . | plainify }}">
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+<link rel="canonical" href="{{ .Permalink }}">
+
+<meta name="author" content="Ivan Klimchuk <ivan@klimchuk.dev>">
+
+<link rel="alternate" type="application/rss+xml" title="Ivan Klimchuk. Blog" href="{{ "index.xml" | absURL }}">
+
+{{ partial "favicon" . }}
+
+{{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction)) }}
+
+{{ $theme := resources.Get "theme.scss" | toCSS $options }}
+
+{{ if hugo.IsProduction }}
+    {{ $theme = $theme | postCSS | minify | fingerprint | resources.PostProcess }}
+{{ end }}
+
+<link href="{{ $theme.Permalink }}" rel="stylesheet" type="text/css">
+
+<script>
+    // menu burger switcher on mobile screens
+    document.addEventListener('DOMContentLoaded', () => {
+        const $nbBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        if ($nbBurgers.length < 1) {
+            return;
+        }
+        $nbBurgers.forEach( el => {
+            el.addEventListener('click', () => {
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+            });
+        });
+    });
+</script>

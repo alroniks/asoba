@@ -1,0 +1,17 @@
+{{ define "title" }}
+    {{ .Title }}
+{{ end }}
+{{ define "main" }}
+<div class="container">
+    <div class="columns is-mobile-columns">
+        <div class="column is-8">
+            <header class="subtitle is-spaced">
+                <h1 class="title is-2 is-size-3-mobile is-spaced">{{- .Title -}}</h1>
+            </header>
+            <div class="content">
+                {{ .Content }}
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}

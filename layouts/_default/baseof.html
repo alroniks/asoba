@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# fb: http://ogp.me/ns/fb#">
+<head>
+  {{ if .IsHome }}
+    <title>{{ .Site.Title }}</title>
+  {{ else }}
+    <title>{{- block "title" . -}} {{- with .Title -}} {{ . }} {{- end -}} {{- end -}}</title>
+  {{ end }}
+
+  {{ partial "meta.html" . }}
+
+  {{ block "opg-extra" . }}{{ end }}
+
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+
+  <script defer data-domain="klimchuk.dev" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  {{ partial "header.html" . }}
+  <div class="main section">
+      {{ block "main" . }}{{ end }}
+  </div>
+  {{ partial "footer.html" . }}
+</body>
+</html>

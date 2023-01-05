@@ -1,0 +1,10 @@
+name = "asoba"
+license = "MIT"
+licenselink = "https://github.com/alroniks/asoba/blob/master/LICENSE"
+description = "Hugo theme for personal site"
+tags = ["responsive", "minimal", "bulma", "asoba", "asoba pro"]
+min_version = "0.100"
+
+[author]
+  name = "Ivan Klimchuk"
+  homepage = "https://klimchuk.dev"

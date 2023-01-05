@@ -1,0 +1,50 @@
+<footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-left">
+                <div class="level-item copy">&copy; 2010 — {{ now.Year }}.</div>
+                <div class="level-item"><a href="/donate">{{ i18n "donate" }}</a></div>
+            </div>
+            <div class="level-right">
+                <div class="content">
+                    <a target="_blank" rel="noopener" href="https://klimchuk.{{ cond (ne .Lang "en") "dev" "by" }}">
+                        klimchuk.{{ cond (ne .Lang "en") "dev" "by" }} <sup>{{ cond (ne .Lang "en") "eng" "бел" }}</sup>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{{ if eq .Page.Type "places" }}
+<script>
+    function wrapImageByFigure(el, wrapper) {
+        wrapper.setAttribute('class', 'is-marginless');
+        el.parentNode.insertBefore(wrapper, el);
+        wrapper.appendChild(el);
+
+        const title = el.getAttribute('title');
+        const alt = el.getAttribute('alt');
+        const caption = title ? title : alt;
+
+        if (caption) {
+            let figcaption = document.createElement('figcaption');
+            let p = document.createElement('p');
+            p.textContent = caption;
+            figcaption.appendChild(p);
+            wrapper.appendChild(figcaption);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+        const contentImagesSelector = 'article.place .content img:not(.no-wrap)';
+        const allImages = document.querySelectorAll(contentImagesSelector);
+
+        for (let i = 0; i < allImages.length; i++) {
+            wrapImageByFigure(allImages[i], document.createElement('figure'));
+        }
+    });
+</script>
+{{ end }}
+
+<script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>

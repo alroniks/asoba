@@ -1,0 +1,21 @@
+<h1 class="title is-2 is-size-3-mobile is-spaced">{{- .Title -}}</h1>
+{{ with .Description }}
+    <div class="subtitle is-3">{{ . }}</div>
+{{ end }}
+{{ partial "donate" }}
+<div class="has-text-grey is-mobile-columns is-align-items-center">
+    {{ $pm := cond (eq "en" .Lang) .PublishDate.Month (index $.Site.Data.Months.Past .PublishDate.Month) }}
+    {{ $p := print .PublishDate.Day " " $pm " " .PublishDate.Year }}
+
+    {{ $v := .Scratch.Get "visited" }}
+    {{ if $v }}
+    {{ $vm := cond (eq "en" .Lang) $v.Month (index $.Site.Data.Months.Past $v.Month) }}
+    <span>
+        {{ i18n "published" }} <time datetime='{{ .PublishDate.Format "01-02-2006 15:04:05" }}'>{{ $p }}</time>,
+        {{ i18n "was" }}
+        <b>{{ print $v.Day " " $vm " " $v.Year }}</b>
+    </span>
+    {{ else }}
+        <time datetime='{{ .PublishDate.Format "01-02-2006 15:04:05" }}'>{{ $p }}</time>
+    {{ end }}
+</div>

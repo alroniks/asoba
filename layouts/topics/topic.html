@@ -1,0 +1,73 @@
+{{ define "title" }}{{ .Description }}{{ end }}
+{{ define "description" }}<meta name="description" content="{{ .Summary | plainify }}">{{ end }}
+{{ define "main" }}
+<div class="container">
+    <div class="columns is-mobile-columns">
+        <div class="column is-8">
+            <article class="post">
+
+                <header class="subtitle is-spaced">
+                    <div class="breadcrumb above-title is-size-5-desktop is-size-6-mobile">
+                        <ul><li><a href='{{ with .GetPage "/posts" }}{{ .Permalink }}{{ end }}'>&larr; {{ i18n "all-notes" }}</a></li></ul>
+                    </div>
+                    <h1 class="title is-2 is-size-3-mobile">{{ .Description }}</h1>
+                </header>
+
+                <div class="subsections">
+                    <div class="breadcrumb">
+                        <ul>
+                            {{ $current := .Permalink }}
+                            {{ range $key, $taxonomy := .Site.Taxonomies.topics }}
+                            {{ with $.Site.GetPage (printf "/topics/%s" $key) }}
+                            <li class="{{ if (eq .Permalink $current) }}is-active has-text-weight-semibold{{ end }}">
+                                <a href="{{ .Permalink }}" title="{{ .Description | safeHTMLAttr }}">{{ .Title }}</a>
+                            </li>
+                            {{ end }}
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+
+                {{ $posts := (where .Data.Pages "Type" "posts") }}
+
+                {{ with .Content }}
+                <div class="content">
+                    {{ . }}
+                    <hr>
+                </div>
+                {{ end }}
+
+                <section>
+                    {{ range $posts }}
+                    <div class="content" data-year='{{ .PublishDate.Format "2006" }}'>
+                        <article>
+                            <header class="title is-4">
+                                <a href="{{ .Permalink }}">{{ .Title }}</a>
+                            </header>
+                            <div class="is-size-5">
+                                {{ with .Description }}
+                                {{ . }}
+                                {{ else }}
+                                {{ .Summary }}
+                                {{ end }}
+                            </div>
+                            <footer class="has-text-grey" style="margin-top: .5rem;">
+                                <div class="is-size-6">
+                                    {{ $pm := cond (eq "en" .Lang) .PublishDate.Month (index $.Site.Data.Months.Past .PublishDate.Month) }}
+                                    {{ $p := print .PublishDate.Day " " $pm " " .PublishDate.Year }}
+                                    <span>{{ i18n "published" }} <time>{{ $p }}</time></span>,
+                                    <span>{{ i18n "reading-time-need" .ReadingTime | lower }}</span>,
+                                    <span>{{ i18n "wordcounter" .WordCount | lower }}</span>
+                                </div>
+                            </footer>
+                        </article>
+                    </div>
+                    {{ end }}
+
+                </section>
+
+            </article>
+        </div>
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,66 @@
+{{ define "main" }}
+<section class="content intro">
+    <div class="container">
+        <div class="about">
+            {{ .Content }}
+            {{ range $key, $link := .Site.Params.Social }}
+                <a href="{{ $link }}" title="{{ i18n $key }}" target="_blank" class="mr-4">
+                    {{ partial "inline-svg" (dict "key" $key "class" "is-medium")}}
+                </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+<section class="recent">
+    <div class="container">
+
+        <!--Текущий проект - ?
+        Опыт работы - timeline? горизонтальный + ссылка на подробнее в linkedin и cv
+        Обо мне - пару строк и что делаю (включая выступления?)
+        -->
+
+        <!--
+        - Правильна! - страница с описанием зачем и как работает, а там уже ссылки и прочее
+        - Уроки по MODX - написать историю и может переоткрыть потом
+        - MODX Belarus - ? надо обновить сайт - написать историю
+        - brevet.by - ?
+        - модуль платежки bepaid - тоже хорошо, дать ссылки на другие
+        - Модкаст - тоже описать что и зачем (есть шанс вернуться)
+        - dtms - проверить актуальность
+        - IDD Meetup - будем делать
+        - namove.by - буду делать
+        -->
+    </div>
+</section>
+
+<div class="container mb-6">
+    <div class="columns">
+        <div class="column is-half">
+            <header class="title">{{ i18n "recent-notes"}}</header>
+            <ul class="mb-5">
+                {{ $posts := (where .Site.RegularPages "Type" "posts") }}
+                {{ range first 7 $posts }}
+                    <li class="is-size-4 my-2"><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+            {{ range (where .Site.Sections  "Type" "posts") }}
+                <a href="{{ .Permalink }}" class="button is-small is-warning is-rounded">{{ i18n "all-notes" }}&nbsp;&rarr;</a>
+            {{ end }}
+        </div>
+        <div class="column is-half">
+            <header class="title">{{ i18n "recent-projects"}}</header>
+            <p>Comming soon...</p>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container">
+    {{ partial "newsletter" }}
+</div>
+
+<div class="container mt-6">
+    {{ partial "donate" }}
+</div>
+
+{{ end }}

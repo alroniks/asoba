@@ -1,0 +1,171 @@
+[about-me]
+other = "about me"
+
+[twitter]
+other = "Twitter: thoughts about everything, nagging, memes"
+
+[linkedin]
+other = "LinkedIn: Professional profile with resume"
+
+[substack]
+other = "Substack: Weekly updates about my journey to indie hacking and building using a weekly focusing approach."
+
+[instagram]
+other = "Instagram: photos of the son, the cat and the places where he has been"
+
+[telegram]
+other = "Telegram: a channel about the backend developer working days"
+
+[facebook]
+other = "Facebook: I am friends with respectable people"
+
+[youtube]
+other = "YouTube: my public speaking recordings and other projects"
+
+[habrcom]
+other = "Habr: social activity in the community"
+
+[modxpro]
+other = "MODX: writing notes about MODX and more"
+
+[notes-subscribe]
+other = "Subscribe to blog"
+
+[newsletter-subscribe]
+other = "Weekly Newsletter"
+
+[local-navigation]
+other = "Local navigation"
+
+[related-notes]
+other = "Related posts"
+
+[all-places]
+other = "All places"
+
+[all-notes]
+other = "All blog posts"
+
+[recent-notes]
+other = "Recent posts"
+
+[recent-projects]
+other = "Recent projects"
+
+[all-talks]
+other = "All talks"
+
+[be]
+other = "Belarusian"
+
+[translation]
+other = "translation in"
+
+[km]
+other = "km"
+
+[away-from-minsk]
+other = "{{ .Count }} kilometers to this city from Minsk"
+
+[in]
+other = "in"
+
+[on]
+other = "on"
+
+[recent]
+other = "Recent updates"
+
+[published]
+other = "Published"
+
+[was]
+other = "visited"
+
+[was-in-places]
+one = "one place"
+few = "**{{ .Count }}** places"
+many = "**{{ .Count }}** places"
+other = "**{{ .Count }}** places"
+
+[was-in-countries]
+one = "in **{{ .Count }}** country"
+other = "in **{{ .Count }}** countries"
+
+[donate]
+other = "Support the author"
+
+[translate-available]
+other = "Для этой страницы доступен перевод на русский язык"
+
+[places]
+other = "Places"
+
+[visited]
+other = "Visited"
+
+[places-reverse]
+other = "Места"
+
+[countries]
+other = "Countries"
+
+[years]
+other = "Years"
+
+[in-year]
+other = "in {{ .Count }} year"
+
+[in-year-reverse]
+other = "в {{ .Count }} году"
+
+[yet]
+other = "more"
+
+[other-countries]
+other = "Other countries"
+
+[in-other-years]
+other = "Travels in other years"
+
+[comments-disabled]
+other = "The ability to comment has disabled on the site"
+
+[no-comments-explanation]
+other = "I am explaining this decision in detail in a note"
+
+[discuss-the-article]
+other = "You can discuss the note by contacting me using any of the methods below.<br/>I will answer your question or suggestion and publish the result of our discussion in the note."
+
+[no-comments-email]
+other = "Email"
+
+[no-comments-telegram]
+other = "Telegram"
+
+[no-comments-facebook]
+other = "Facebook"
+
+[reading-time-need]
+one = "Reading takes one minute"
+few = "Reading takes {{ .Count }} minutes"
+many = "Reading takes {{ .Count }} minutes"
+other = "It took {{ .Count }} minutes to read"
+
+[reading-time]
+one = "It took one minute to read"
+few = "It took {{ .Count }} minutes to read"
+many = "It took {{ .Count }} minutes to read"
+other = "It took {{ .Count }} minutes to read"
+
+[wordcounter]
+one = "The note contains one word"
+few = "The note contains {{ .Count }} words"
+many = "The note contains {{ .Count }} words"
+other = "The note contains {{ .Count }} words"
+
+[watch-video]
+other = "Watch the video"
+
+[flipping-slides]
+other = "Flipping slides"

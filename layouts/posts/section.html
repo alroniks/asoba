@@ -1,0 +1,37 @@
+{{ define "title"}}{{ .Title }} {{ .Site.Params.Genitive }}{{ end }}
+{{ define "main" }}
+    <div class="container">
+
+        <h1 class="title is-1 is-size-2-mobile">{{ .Title }}</h1>
+
+        <div class="subsections">
+            <div class="breadcrumb">
+                <ul>
+                    {{ range $key, $taxonomy := .Site.Taxonomies.topics }}
+                        {{ with $.Site.GetPage (printf "/topics/%s" $key) }}
+                            <li><a href="{{ .Permalink }}" title="{{ .Description | safeHTMLAttr }}">{{ .Title }}</a></li>
+                        {{ end }}
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+
+        <div class="css-column">
+            {{ $posts := (where .Data.Pages "Type" "posts") }}
+            <div class="menu" style="margin: 0 -12px">
+                <ul class="menu-list">
+                    {{ range $posts }}
+                        <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+
+        <br><br>
+
+        <a class="tag is-medium is-info" href="https://ivanklimchuk.substack.com/">{{ i18n "newsletter-subscribe" }}</a>
+
+        <a class="tag is-medium is-light" href="{{ "index.xml" | absURL }}">{{ i18n "notes-subscribe" }} via RSS</a>
+
+    </div>
+{{ end }}
