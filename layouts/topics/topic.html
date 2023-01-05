@@ -53,7 +53,7 @@
                             </div>
                             <footer class="has-text-grey" style="margin-top: .5rem;">
                                 <div class="is-size-6">
-                                    {{ $pm := cond (eq "en" .Lang) .PublishDate.Month (index $.Site.Data.Months.Past .PublishDate.Month) }}
+                                    {{ $pm := .PublishDate.Month }}
                                     {{ $p := print .PublishDate.Day " " $pm " " .PublishDate.Year }}
                                     <span>{{ i18n "published" }} <time>{{ $p }}</time></span>,
                                     <span>{{ i18n "reading-time-need" .ReadingTime | lower }}</span>,
