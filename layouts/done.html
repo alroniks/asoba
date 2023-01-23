@@ -1,0 +1,27 @@
+<div class="container">
+	<h1 class="title is-1 is-size-2-mobile is-spaced">{{ .Title }}</h1>
+	{{ with .Content }}
+        <div class="tile is-8">
+            <div class="content">{{ . }}</div>
+        </div>
+        <br><br>
+    {{ end }}
+
+    <hr>
+
+    {{ range $section, $projects := $.Site.Data.projects }}
+        <h2 class="title is-3">{{ $section }}</h2>
+
+        {{ $projects }}
+        
+        {{ range $name, $props := $projects }}
+
+            <div class="card">
+                {{ $name }}
+                ={{ $props }}=
+            </div>
+
+        {{ end }}
+        
+    {{ end }}
+</div>

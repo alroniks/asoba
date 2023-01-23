@@ -4,7 +4,7 @@
 {{ define "main" }}
 <div class="container">
     <div class="columns is-mobile-columns">
-        <div class="column is-8">
+        <div class='column {{ index .Params "column-size" | default "is-8" }}'>
             <header class="subtitle is-spaced">
                 <h1 class="title is-2 is-size-3-mobile is-spaced">{{- .Title -}}</h1>
             </header>
