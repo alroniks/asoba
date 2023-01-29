@@ -1,0 +1,13 @@
+<div class="field is-grouped">
+	<!-- <span class="">Subscribe with</span>	 -->
+	{{ range $index, $value := slice "Google" "GitHub" "Twitter" }}
+		<div class="control">
+			<a href="https://socialscri.be/to/ivanklimchukfocus/with/{{ $value | lower }}" class="button is-smadll is-lifght">
+				<span class="icon">
+					{{ partial "inline-svg" (dict "key" $value "class" "is-small")}}
+				</span>
+				<span>via {{ $value }}</span>
+			</a>
+		</div>
+	{{ end }}
+</div>
