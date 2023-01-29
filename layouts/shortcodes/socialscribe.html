@@ -4,7 +4,7 @@
 		<div class="control">
 			<a href="https://socialscri.be/to/ivanklimchukfocus/with/{{ $value | lower }}" class="button is-smadll is-lifght">
 				<span class="icon">
-					{{ partial "inline-svg" (dict "key" $value "class" "is-small")}}
+					{{ partial "inline-svg" (dict "key" ($value | lower) "class" "is-small")}}
 				</span>
 				<span>via {{ $value }}</span>
 			</a>
