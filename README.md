@@ -9,4 +9,4 @@ asoba.netlify.com
 Showcases
 
 https://klimchuk.dev
-https://klimchuk.by
+https://klimchuk.net
